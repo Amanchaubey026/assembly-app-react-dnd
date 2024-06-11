@@ -79,6 +79,22 @@ npm run dev
 
 ## Snapshot of Website
 
+![image](https://github.com/Amanchaubey026/assembly-app-react-dnd/assets/98681520/bc856e54-501b-4e9e-bb95-219ad4fb7c77)
+
+![image](https://github.com/Amanchaubey026/assembly-app-react-dnd/assets/98681520/93928ad4-c1c4-4957-8851-ebc205238385)
+
+![image](https://github.com/Amanchaubey026/assembly-app-react-dnd/assets/98681520/ebefe9b9-7722-494a-9a9f-10eed3694c5d)
+
+![image](https://github.com/Amanchaubey026/assembly-app-react-dnd/assets/98681520/799616ed-1b6d-4eec-9e68-0c93c778f837)
+
+![image](https://github.com/Amanchaubey026/assembly-app-react-dnd/assets/98681520/00787bd8-2dec-412b-aa57-97dee69a883a)
+
+![image](https://github.com/Amanchaubey026/assembly-app-react-dnd/assets/98681520/ca734735-979a-420b-a4c3-c43e1d7ed02f)
+
+
+
+
+
 
 
 ## Technology Stack
