@@ -31,6 +31,7 @@ function PartsSelection() {
       justifyContent="center"
       p={5}
       textAlign="center"
+      mb={'60'}
     >
       <Heading mb={5}>Select Parts</Heading>
       <Grid

@@ -57,8 +57,8 @@ const Footer = () => {
             {/* SVG path data */}
           </svg>
         </Flex>
-        <Text pt="4" fontSize="14px">
-          © 2022 Chakra Templates. All rights reserved
+        <Text color={'red'} pt="4" fontSize="14px">
+          © 2024 Red/Nerds. All rights reserved
         </Text>
       </Box>
     </Box>

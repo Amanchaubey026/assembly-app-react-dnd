@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Divider } from "@chakra-ui/react";
 import {
   Route,
   Routes,
@@ -20,6 +20,7 @@ function App() {
         <Route path="/assembly" element={<Assembly/>} />
         <Route path="/final-product" element={<FinalProduct/>} />
       </Routes>
+      <Divider color={'wheat'}/>
       <Footer/>
     </Box>
   );
