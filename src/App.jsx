@@ -9,6 +9,7 @@ import Assembly from "./components/Assembly";
 import FinalProduct from "./components/FinalProduct";
 import './App.css'
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 function App() {
   return (
     <Box>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/assembly" element={<Assembly/>} />
         <Route path="/final-product" element={<FinalProduct/>} />
       </Routes>
+      <Footer/>
     </Box>
   );
 }
