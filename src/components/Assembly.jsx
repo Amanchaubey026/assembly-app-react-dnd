@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { Box, Flex, Button, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, Button, useColorMode, useToast } from '@chakra-ui/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import part1 from '../assets/image_part_001.jpg';
 import part2 from '../assets/image_part_002.jpg';
 import part3 from '../assets/image_part_003.jpg';
@@ -82,6 +82,22 @@ function Assembly() {
   const location = useLocation();
   const [assembledParts, setAssembledParts] = useState({ 1: null, 2: null, 3: null, 4: null });
   const { colorMode } = useColorMode();
+  const toast = useToast();
+
+  useEffect(() => {
+    toast({
+      title: "Drag and drop items to assemble and see the final product!",
+      status: "warning",
+      duration: 5000,
+      isClosable: true,
+      position: "top",
+      variant: "solid",
+      containerStyle: {
+        backgroundColor: 'gray.800',
+        color: 'white',
+      },
+    });
+  }, [toast]);
 
   const selectedParts = location.state?.selectedParts || [];
 
@@ -93,9 +109,11 @@ function Assembly() {
     (part) => selectedParts.includes(part.id) && !Object.values(assembledParts).includes(part)
   );
 
+  const isFinishDisabled = Object.values(assembledParts).every((part) => part === null);
+
   return (
     <DndProvider backend={HTML5Backend}>
-      <Box p={5} bg="black">
+      <Box p={5} bg="black" color="white">
         <Flex>
           <Box width="30%" mr="10px">
             {filteredParts.map((part) => (
@@ -146,6 +164,7 @@ function Assembly() {
           onClick={() =>
             navigate('/final-product', { state: { assembledParts: Object.values(assembledParts).filter(Boolean) } })
           }
+          isDisabled={isFinishDisabled}
         >
           Finish
         </Button>
@@ -155,4 +174,3 @@ function Assembly() {
 }
 
 export default Assembly;
-//

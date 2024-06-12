@@ -16,6 +16,7 @@ function FinalProduct() {
       w={"100%"}
       display={"flex"}
       justifyContent={"center"}
+      bg={'black'}
     >
       <Box w={"50%"} >
         <SimpleGrid columns={2} spacing="0" p="0" m="0" w={"100%"} >

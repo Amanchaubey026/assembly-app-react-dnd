@@ -1,5 +1,5 @@
-import { Box, Image, Button, Grid, Heading, Flex } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Box, Image, Button, Grid, Heading, Flex, useToast } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import part1 from '../assets/image_part_001.jpg';
 import part2 from '../assets/image_part_002.jpg';
@@ -15,7 +15,23 @@ const parts = [
 
 function PartsSelection() {
   const navigate = useNavigate();
+  const toast = useToast();
   const [selectedParts, setSelectedParts] = useState([]);
+
+  useEffect(() => {
+    toast({
+      title: "Please select at least one item to proceed.",
+      status: "warning",
+      duration: 3000,
+      isClosable: true,
+      position: "top",
+      variant: "solid",
+      containerStyle: {
+        backgroundColor: 'gray.800',
+        color: 'white',
+      },
+    });
+  }, [toast]);
 
   const toggleSelectPart = (id) => {
     setSelectedParts((prev) =>
@@ -23,15 +39,36 @@ function PartsSelection() {
     );
   };
 
+  const handleNextClick = () => {
+    if (selectedParts.length === 0) {
+      toast({
+        title: "Please select at least one item to proceed.",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+        variant: "solid",
+        containerStyle: {
+          backgroundColor: 'gray.800',
+          color: 'white',
+        },
+      });
+    } else {
+      navigate('/assembly', { state: { selectedParts } });
+    }
+  };
+
   return (
     <Box
+      minH={'100vh'}
       display="flex"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
       p={5}
       textAlign="center"
-      mb={'60'}
+      bg="black"
+      color="white"
     >
       <Heading mb={5}>Select Parts</Heading>
       <Grid
@@ -60,10 +97,10 @@ function PartsSelection() {
         ))}
       </Grid>
       <Button
-        colorScheme="red"
+        colorScheme={selectedParts.length>0?"red":""}
         size="lg"
         mt={8}
-        onClick={() => navigate('/assembly', { state: { selectedParts } })}
+        onClick={handleNextClick}
       >
         Next
       </Button>

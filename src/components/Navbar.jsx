@@ -36,7 +36,7 @@ export default function Navbar() {
         navigate('/');
     }
   return (
-    <Box bg={'gray.900'} px={4}>
+    <Box bg={'black'} borderBottom={'1px'} borderBottomColor={'wheat'} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
         <IconButton
           size={'md'}
