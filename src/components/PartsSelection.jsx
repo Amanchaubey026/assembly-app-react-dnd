@@ -70,8 +70,9 @@ function PartsSelection() {
       bg="black"
       color="white"
     >
-      <Heading mb={5}>Select Parts</Heading>
+      <Heading mb={5} fontWeight={'bold'} fontSize={'5xl'}>Select Parts</Heading>
       <Grid
+        mt={7}
         templateColumns="repeat(auto-fit, minmax(150px, 1fr))"
         gap={4}
         justifyContent="center"

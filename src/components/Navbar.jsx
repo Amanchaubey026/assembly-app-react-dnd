@@ -2,7 +2,7 @@
 // import React from 'react';
 import { Box, Flex, Avatar, HStack, Link, IconButton, Button, Menu, MenuButton, useDisclosure, Stack, Text } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
 
 const Links = [
   { name: 'Product Description', path: '/' },
@@ -11,30 +11,41 @@ const Links = [
   { name: 'Final Product', path: '/final-product' },
 ];
 
-const NavLink = ({ children, to }) => (
-  <Link
-    as={RouterLink}
-    to={to}
-    px={2}
-    py={1}
-    color={'red'}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: 'gray.700',
-    }}
-    href={'#'}
-  >
-    {children}
-  </Link>
-);
+const NavLink = ({ children, to }) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
+  return (
+    <Link
+      as={RouterLink}
+      to={to}
+      px={2}
+      py={1}
+      color={'red'}
+      rounded={'md'}
+      _hover={{
+        textDecoration: 'none',
+        bg: 'gray.700',
+      }}
+      style={{
+        textDecoration: isActive ? 'underline' : 'none',
+        textUnderlineOffset: isActive ? '4px' : 'none',
+        textDecorationColor: isActive ? 'red' : 'none',
+      }}
+    >
+      {children}
+    </Link>
+  );
+};
 
 export default function Navbar() {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-    function handleClick(){
-        navigate('/');
-    }
+
+  function handleClick() {
+    navigate('/');
+  }
+
   return (
     <Box bg={'black'} borderBottom={'1px'} borderBottomColor={'wheat'} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
@@ -47,9 +58,14 @@ export default function Navbar() {
           ml={-2}
         />
         <HStack spacing={8} alignItems={'center'}>
-          <Box cursor={'pointer'} onClick={handleClick} color={'Red'}>
-            <Text fontWeight="bold" fontSize={25} mt={4} color={'Red'}>Red/</Text>
-            <Text fontWeight="bold" fontSize={25} mb={5} color={'Red'}>Nerds</Text>
+          <Box 
+            cursor={'pointer'} 
+            onClick={handleClick} 
+            color={'Red'} 
+            px={2} // Add padding around the logo text
+          >
+            <Text fontWeight="bold" fontSize={25} mt={4} color={'Red'}>RED/</Text>
+            <Text fontWeight="bold" fontSize={25} mb={5} color={'Red'}>NERDS</Text>
           </Box>
           <HStack
             as={'nav'}
